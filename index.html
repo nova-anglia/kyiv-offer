@@ -571,12 +571,14 @@
       #lightbox-next { right: 8px; }
       #lightbox img { max-height: 82vh; }
     }
-    /* P2: галерея 2-col на вузькому мобільному */
+    /* P2: галерея 2-col на вузькому мобільному + orphan-фікс (остання сирота → full width) */
     @media (max-width: 480px) {
       .gallery-row { grid-template-columns: repeat(2, 1fr); }
+      .gallery-row img:last-child:nth-child(odd) { grid-column: span 2; }
       .gallery-row--5 { grid-template-columns: repeat(2, 1fr); }
       .gallery-row--5 img:nth-child(-n+3) { grid-column: span 1; }
       .gallery-row--5 img:nth-child(n+4)  { grid-column: span 1; }
+      .gallery-row--5 img:last-child      { grid-column: span 2; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
