@@ -5,12 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
   <meta name="google" content="notranslate">
-  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="date=no">
+  <meta name="format-detection" content="address=no">
+  <meta name="format-detection" content="email=no">
   <meta name="x-apple-disable-message-reformatting">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Запит пропозицій від підрядника — 1к, ЖК «Нова Англія», Київ</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* iOS Safari автодетектить цифри як телефон попри format-detection meta — нейтралізуємо CSS */
+    a[href^="tel:"], a[href^="sms:"], a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+      pointer-events: none !important;
+      cursor: text !important;
+      font-weight: inherit !important;
+    }
 
     /* ── Design tokens ──────────────────────────────────── */
     :root {
@@ -584,6 +596,17 @@
     @media (max-width: 480px) {
       .info-grid { grid-template-columns: repeat(2, 1fr); }
       /* gallery-row auto-adapts через auto-fill, додаткові media-rules не потрібні */
+
+      /* Scope-table — на вузькому мобільному прибираємо nowrap і ужимаємо */
+      .scope-table { font-size: 13px; }
+      .scope-table th { padding: 8px 8px; font-size: 10px; letter-spacing: 0.5px; }
+      .scope-table td { padding: 9px 8px; }
+      .scope-table .amount { white-space: normal; }
+      .scope-table tfoot td { font-size: 14px; padding: 12px 8px; }
+    }
+    @media (max-width: 380px) {
+      .scope-table { font-size: 12px; }
+      .scope-table th, .scope-table td { padding: 7px 6px; }
     }
   </style>
 </head>
