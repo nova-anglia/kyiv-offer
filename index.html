@@ -599,17 +599,56 @@
     @media (max-width: 480px) {
       .info-grid { grid-template-columns: repeat(2, 1fr); }
       /* gallery-row auto-adapts через auto-fill, додаткові media-rules не потрібні */
-
-      /* Scope-table — на вузькому мобільному прибираємо nowrap і ужимаємо */
-      .scope-table { font-size: 13px; }
-      .scope-table th { padding: 8px 8px; font-size: 10px; letter-spacing: 0.5px; }
-      .scope-table td { padding: 9px 8px; }
-      .scope-table .amount { white-space: normal; }
-      .scope-table tfoot td { font-size: 14px; padding: 12px 8px; }
     }
-    @media (max-width: 380px) {
-      .scope-table { font-size: 12px; }
-      .scope-table th, .scope-table td { padding: 7px 6px; }
+
+    /* Scope-table — на мобільному перетворюємо на картки (зона / опис / сума) */
+    @media (max-width: 600px) {
+      .scope-table, .scope-table thead, .scope-table tbody, .scope-table tfoot,
+      .scope-table tr, .scope-table th, .scope-table td { display: block; }
+      .scope-table thead { display: none; }
+      .scope-table tbody tr {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 4px;
+      }
+      .scope-table tbody tr:last-child { border-bottom: none; }
+      .scope-table td {
+        padding: 2px 0;
+        border: none;
+        white-space: normal;
+        text-align: left;
+      }
+      .scope-table tbody td:first-child {
+        font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px;
+      }
+      .scope-table tbody td:nth-child(2) {
+        font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 6px;
+      }
+      .scope-table tbody td:last-child {
+        font-size: 14px; font-weight: 700; color: var(--accent); text-align: right;
+      }
+      .scope-table tbody td.amount { text-align: right; }
+
+      /* tfoot — РАЗОМ — окрема акцент-картка */
+      .scope-table tfoot tr {
+        background: var(--accent); color: #fff;
+        border-radius: var(--radius);
+        padding: 14px;
+        margin-top: 8px;
+      }
+      .scope-table tfoot td { color: #fff; padding: 2px 0; }
+      .scope-table tfoot td:first-child {
+        font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px;
+      }
+      .scope-table tfoot td.amount {
+        font-size: 18px; font-weight: 800; color: #fff; text-align: right;
+      }
+    }
+
+    /* CTA-блок — у dark mode прибираємо світлий --accent (низький контраст з білим текстом) */
+    @media (prefers-color-scheme: dark) {
+      .cta-block { background: #1a3a5c; color: #e8f4ff; }
+      .cta-block h2 { color: #fff; }
+      .cta-block p { color: #c5dff5; }
     }
   </style>
 </head>
