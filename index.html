@@ -213,8 +213,6 @@
       font-size: 13px;
       line-height: 1.5;
       margin-bottom: 4px;
-      padding-left: 1.6em;
-      text-indent: -1.6em;
     }
     .zone-done { color: var(--ok); }
     .zone-todo { color: var(--neut); }
@@ -556,13 +554,18 @@
       #lightbox-next { right: 8px; }
       #lightbox img { max-height: 82vh; }
     }
-    /* Мобільна галерея — один ряд, компактний thumbnail */
+    /* Мобільна галерея — gallery-row 3-col default, gallery-row--5 = 3+2 (6-col spans) */
     @media (max-width: 480px) {
       /* .gallery-row залишається repeat(3,1fr) (default) → 3 фото = 1 ряд, 6 фото = 2×3 */
       .gallery-row img { aspect-ratio: 3/2; }
-      .gallery-row--5 { grid-template-columns: repeat(5, 1fr); }
-      .gallery-row--5 img:nth-child(-n+3) { grid-column: span 1; }
-      .gallery-row--5 img:nth-child(n+4)  { grid-column: span 1; }
+      .gallery-row--5 { grid-template-columns: repeat(6, 1fr); }
+      .gallery-row--5 img:nth-child(-n+3) { grid-column: span 2; }
+      .gallery-row--5 img:nth-child(n+4)  { grid-column: span 3; }
+    }
+    /* zone-item на мобільному: іконка зверху, контент на повну ширину */
+    @media (max-width: 640px) {
+      .zone-item { flex-direction: column; gap: 4px; }
+      .zone-icon { margin-top: 0; font-size: 18px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
