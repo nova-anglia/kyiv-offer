@@ -557,6 +557,7 @@
     /* P2: галерея 2-col на вузькому мобільному + orphan-фікс (остання сирота → full width) */
     @media (max-width: 480px) {
       .gallery-row { grid-template-columns: repeat(2, 1fr); }
+      .gallery-row img { aspect-ratio: 3/2; }
       .gallery-row img:last-child:nth-child(odd) { grid-column: span 2; }
       .gallery-row--5 { grid-template-columns: repeat(2, 1fr); }
       .gallery-row--5 img:nth-child(-n+3) { grid-column: span 1; }
