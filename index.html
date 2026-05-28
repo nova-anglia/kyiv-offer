@@ -208,19 +208,17 @@
       font-size: 15px;
       margin-bottom: 4px;
     }
-    .zone-done {
-      font-size: 13px;
-      color: var(--ok);
-      margin-bottom: 3px;
-      padding-left: 1.6em;
-      text-indent: -1.6em;
-    }
+    .zone-done,
     .zone-todo {
       font-size: 13px;
-      color: var(--neut);
+      line-height: 1.5;
+      margin-bottom: 4px;
       padding-left: 1.6em;
       text-indent: -1.6em;
     }
+    .zone-done { color: var(--ok); }
+    .zone-todo { color: var(--neut); }
+    .zone-done:last-of-type { margin-bottom: 8px; }
     .badge {
       display: inline-block;
       font-size: 11px;
