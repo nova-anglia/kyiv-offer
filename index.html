@@ -212,10 +212,14 @@
       font-size: 13px;
       color: var(--ok);
       margin-bottom: 3px;
+      padding-left: 1.6em;
+      text-indent: -1.6em;
     }
     .zone-todo {
       font-size: 13px;
       color: var(--neut);
+      padding-left: 1.6em;
+      text-indent: -1.6em;
     }
     .badge {
       display: inline-block;
@@ -554,15 +558,13 @@
       #lightbox-next { right: 8px; }
       #lightbox img { max-height: 82vh; }
     }
-    /* P2: галерея 2-col на вузькому мобільному + orphan-фікс (остання сирота → full width) */
+    /* Мобільна галерея — один ряд, компактний thumbnail */
     @media (max-width: 480px) {
-      .gallery-row { grid-template-columns: repeat(2, 1fr); }
+      /* .gallery-row залишається repeat(3,1fr) (default) → 3 фото = 1 ряд, 6 фото = 2×3 */
       .gallery-row img { aspect-ratio: 3/2; }
-      .gallery-row img:last-child:nth-child(odd) { grid-column: span 2; }
-      .gallery-row--5 { grid-template-columns: repeat(2, 1fr); }
+      .gallery-row--5 { grid-template-columns: repeat(5, 1fr); }
       .gallery-row--5 img:nth-child(-n+3) { grid-column: span 1; }
       .gallery-row--5 img:nth-child(n+4)  { grid-column: span 1; }
-      .gallery-row--5 img:last-child      { grid-column: span 2; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
